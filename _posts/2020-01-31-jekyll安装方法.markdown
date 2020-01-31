@@ -1,0 +1,74 @@
+---
+layout: post
+title:  "jekyll 安装方法"
+date:   2020-01-31 18:10:59 +0800
+categories: jekyll update
+---
+
+github的博客默认支持jekyll，支持原生markdown，所以使用jekyll环境来作为自己的博客环境。我的操作系统是win10，win10现在支持wsl。可以在wsl环境下安装jekyll环境。如果在安装过程中出现问题，需要把wsl重置一下。现在重置可能会出问题，最好直接卸载。然后重新安装可能会失败。这时可以在powershell中运行一下wsl.exe命令再重新安装即可。
+    
+安装ruby共有四种方法，一种是apt安装，但会出现权限问题。第二种方法rbenv安装是解决第一种权限问题而采用的方法。但网络不给力，所以安装不成功，但记录一下。第三种源码安装。第四种rvm安装。后面两个没试验。在wsl上安装，所以安装方式要按照jekyllrb.com网站上的windows下的bash方法来安装。
+# 1 安装ruby
+    $ sudo apt-get update -y && sudo apt-get upgrade -y
+    $ sudo apt-add-repository ppa:brightbox/ruby-ng
+    $ sudo apt-get update
+    $ sudo apt-get install ruby2.5 ruby2.5-dev build-essential dh-autoreconf
+
+# 2 gem换源
+访问官方网址有时候会有问题，网上的一种解决方案是将远替换成 ruby-china 的，替换方式如下：
+    
+    $ gem source -r https://rubygems.org/
+    $ gem source -a https://gems.ruby-china.com/
+    $ gem sources -l  
+    $ gem update
+
+# 3 安装jekyll
+
+    $ gem install jekyll bundler
+        
+这里可能会有权限问题，不建议使用sudo。按网上找到的解决方法：
+    
+    echo 'export PATH="$HOME/.gem/bin:$PATH"' >> ~/.bashrc
+    echo 'export GEM_HOME=~/.gem' >> ~/.bashrc
+    echo 'export GEM_PATH=~/.gem' >> ~/.bashrc
+    source ~/.bashrc
+
+# 4 运行
+    jekyll -v 显示，则正常
+    jekyll new my-awesome-site
+    cd my-awesome-site/
+    bundle exec jekyll serve
+
+网上找到的第二种方法，自己实验未成功。仅供参考：
+
+error:
+
+$gem install bundler
+ERROR:  While executing gem ... (Gem::FilePermissionError)
+    You don't have write permissions for the /var/lib/gems/2.3.0 directory.
+Since it is obviously a permission issue, I tried sudo:
+
+$sudo gem install bundler
+Bingo, there is no issue anymore. It turned out I laughed too early. When I followed the guide to install other commands, I got other permission issues and sudo wont help. So anyway, sudo is not a solution.
+
+Solution:
+sudo apt-get update
+sudo apt-get install git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev libsqlite3-dev sqlite3 libxml2-dev libxslt1-dev libcurl4-openssl-dev python-software-properties libffi-dev
+
+cd
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+exec $SHELL
+
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+exec $SHELL
+
+rbenv install 2.3.1
+rbenv global 2.3.1
+ruby -v
+The last step is to install Bundler:
+
+gem install bundler
+rbenv rehash
