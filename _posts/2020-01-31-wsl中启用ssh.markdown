@@ -1,0 +1,21 @@
+---
+layout: post
+title:  "wsl中启用ssh"
+date:   2020-01-31 20:03:00 +0800
+categories: ssh wsl linux
+---
+wsl默认使用cmd中的宋体，看起来不舒服。所以启用ssh服务，方便使用xshell连接。
+先重新安装一下ssh.
+
+    sudo apt-get remove openssh-server
+    sudo apt-get install openssh-server
+    
+由于win10默认占用了22端口。所以需要把wsl中的ssh服务改为23端口。
+
+    sudo vi /etc/ssh/sshd_config
+    Port 23 #默认即可，如果有端口占用可以自己修改
+    PasswordAuthentication yes # 允许密码登录
+
+完成后重启ssh
+    
+    sudo service ssh restart 
