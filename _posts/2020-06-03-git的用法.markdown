@@ -1,0 +1,7 @@
+---
+layout: post
+title:  "git"
+date:   2020-06-03 20:00:00 +0800
+categories: ssh linux
+---
+git 是linux之父linus编写的一个版本管理软件。我觉得适用于所有需要管理文件的场景。
