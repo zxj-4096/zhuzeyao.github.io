@@ -1,0 +1,7 @@
+---
+layout: post
+title:  "vim的用法"
+date:   2020-06-07 20:00:00 +0800
+categories: java linux
+---
+自已的一个项目一直在用socket通信。之前一直使用blocked式的通信方法。

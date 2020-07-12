@@ -1,7 +1,22 @@
 ---
 layout: post
-title:  "git"
+title:  "git的用法"
 date:   2020-06-03 20:00:00 +0800
 categories: ssh linux
 ---
-git 是linux之父linus编写的一个版本管理软件。我觉得适用于所有需要管理文件的场景。
+git 是linux之父linus编写的一个分布式版本管理软件。我觉得适用于所有需要管理文件的场景。
+
+下面记录一下git的一些常用用法。帮助小白入门。
+1.安装
+    安装参考官网[https://git-scm.com/]
+2.配置
+    基本配置只需要配置邮件及名称即可。
+3.常用命令
+    选择一个要进行版本管理的文件夹，右击，选择git bash。
+    git init 就完成了初始化过程。
+    基本用法就是单分支，实现各个版本的差异对比及版本回退。
+4.高级用法
+    高级用法涉及多人协作，涉及到远程仓库的使用。
+    git fetch origin master
+    git merge origin/master
+    

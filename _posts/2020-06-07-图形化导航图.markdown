@@ -1,0 +1,7 @@
+---
+layout: post
+title:  "图形化导航"
+date:   2020-06-07 20:00:00 +0800
+categories: ssh linux
+---
+自已一直对前端，或图形化的东西感兴趣，

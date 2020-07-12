@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "后端概述"
+date:   2020-06-04 20:00:00 +0800
+categories: ssh linux
+---
+一直在从事后端方面的工作
+说一下自己的理解
+1、常用技术框架
+    spring+k8s
+2、理解 
